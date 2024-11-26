@@ -30,24 +30,26 @@ const Registration = () => {
         if(password>= "A" && password<= "Z" ){
             setErrorPassword("small latter")
         }
+        setErrorPassword("")
     }
+   
     const evenHandle=()=>{
         setErrorPassword("Password must be between 8 characters and at least one uppercase letter[a-z],lowercase letter[a-z],digit[0-9],special character[!@#$%^&*(),.?\":{}|<>] ")
-     
+
     }
    
     const handleSubmit = () => {
         if (!email) {
-            setErrormail("mail de")
+            setErrormail("Enter a mail here")
         } else
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 setErrormail("Not Mail")
             }
         if (!text){
-            setEerrorText("Name de")
+            setEerrorText("Entre a name")
         }
         if(!password){
-            setErrorPassword("Passoword de")
+            setErrorPassword("Enter a pasword")
         }
         
     }
