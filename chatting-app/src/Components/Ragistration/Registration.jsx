@@ -17,6 +17,8 @@ const Registration = () => {
     const[errortext,setEerrorText]=useState("")
     const[errorpassword,setErrorPassword]=useState("")
 
+    const regex = /^.{8,}$/;
+
     const handleEmail = (e) => { 
         setEmail(e.target.value);
         setErrormail("")
@@ -27,9 +29,6 @@ const Registration = () => {
     }
     const handlePassword=(e)=>{
         setPassword(e.target.value)
-        if(password>= "A" && password<= "Z" ){
-            setErrorPassword("small latter")
-        }
         setErrorPassword("")
     }
    
@@ -51,6 +50,25 @@ const Registration = () => {
         if(!password){
             setErrorPassword("Enter a pasword")
         }
+        else{
+             if(!/ ?=.*?[A-Z]/.test(password)){
+              setErrorPassword("At least one upper case ")
+            }
+            else if(!/ ?=.*?[a-z]/.test(password)){
+                setErrorPassword("At least one lower case English letter")
+            }
+            else if(!/ ?=.*?[0-9]/.test(password)){
+                setErrorPassword("At least one digi")
+            }
+            else if(!/ ?=.*?[#?!@$%^&*-];/.test(password)){
+                setErrorPassword("At least one special character")
+            }
+            if (!regex.test(password)) {
+                setErrorPassword("Input must be at least 8 characters long.");
+              } 
+           
+        }
+      
         
     }
     return (
