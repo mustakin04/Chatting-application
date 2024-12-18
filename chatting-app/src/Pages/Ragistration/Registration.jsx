@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import registration from "../../../src/assets/registration.png"
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {BallTriangle } from 'react-loader-spinner'
@@ -91,8 +91,12 @@ const Registration = () => {
         if (isValid) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then(() => {
+                    sendEmailVerification(auth.currentUser)
                     setLoading(true)
                     toast("Registation Succesfully Done")
+                    setEmail("")
+                    setPassword("")
+                    setText("")
                     setTimeout(() => {
                         navigate("/Login")
                     }, 3000);
@@ -175,7 +179,8 @@ const Registration = () => {
                bg-[#5F35F5] py-[20px] pl-[158px] pr-[132px] rounded-[86px]' href="#"> Sign up</a>
                 </div>
                 <p className='font-sans font-mixed text-[13px] mt-[35px] w-[368px] text-center '>
-                    Already  have an account ? <span className='text-[#EA6C00]'>Sign In</span></p>
+                    Already  have an account ? <span className='text-[#EA6C00]'>
+                       <Link to="/login"> Sign In</Link></span></p>
             </div >
             <div className='w-1/2'>
                 <img className='w-full h-screen object-center' src={registration} alt="" />

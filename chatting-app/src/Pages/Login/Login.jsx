@@ -3,33 +3,67 @@ import login from "../../../src/assets/login.png"
 import { FcGoogle } from "react-icons/fc";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-     const [mail,setMail]=useState("")
-     const [pass,setPass]=useState("")
-     
-     const [errmail,setErrMail]=useState("")
-     const[errpassword,setErrPassword]=useState("")
+    const auth = getAuth();
+    const navigate=useNavigate("")
+    const [email, setEmail] = useState("")
+    const [pass, setPass] = useState("")
 
-     const[seePassword,setSeePassword]=useState(false)
+    const [errmail, setErrMail] = useState("")
+    const [errpassword, setErrPassword] = useState("")
 
-    const handleMail=(e)=>{
-        setMail(e.target.value)
-        setMail("")
+    const [seePassword, setSeePassword] = useState(false)
+
+    const handleMail = (e) => {
+        setEmail(e.target.value)
+
     }
-    const handlePass=(e)=>{
+    const handlePass = (e) => {
         setPass(e.target.value)
-        setMail("")
     }
-    const handleLogin=()=>{
-        if(!mail){
-           setErrMail("Enter a Mail")  
-        }else{
-            setErrMail("")
+    const handleLogin = () => {
+        let isvalid = true;
+        if (!email) {
+            setErrMail("Enter a Mail")
+            isvalid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setErrMail("Invalid Mail")
+            isvalid = false;
         }
-        if(!pass){
+        else {
+            setErrMail("")
+
+        }
+        if (!pass) {
             setErrPassword("Enter Password")
+            isvalid = false;
+        } else {
+            setErrPassword("")
+
+        }
+        if (isvalid) {
+            signInWithEmailAndPassword(auth, email, pass)
+                .then(() => {
+                    setEmail("")
+                    setPass("")
+                    toast("Registation Succesfully Done")
+                    setTimeout(() => {
+                        navigate("/home")
+                      }, 2000);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    if(errorCode=="auth/invalid-credential"){
+                        toast("auth/invalid-credential")
+                    }
+                });
+
+            
         }
     }
     return (
@@ -42,37 +76,44 @@ const Login = () => {
                     </div>
                     <p className='font-sans font-semibold text-[13px] text-[#03014C]'>Login with Google</p>
                 </div>
+                <ToastContainer />
                 <div className='border-b-[2px] w-[372px]'>
                     <p className='font-sans font-normal text-[13px] text-[#ababc4]'>Email Addres</p>
-                    <input type={mail}
+                    <input type={email}
                         onChange={handleMail}
                         placeholder='Enter mail'
                         className='border-none focus:outline-none placeholder-black' />
                 </div>
-                <p>{errmail}</p>
+                 
+                <p className='bg-red-500 font-sans font-normal text-[15px] w-[220px] rounded-[10px] '>{errmail}</p>
                 <div className='relative border-b-[2px] w-[372px] mt-[56px]'>
                     <p className='font-sans font-normal text-[13px] text-[#ababc4]'>Password</p>
                     {
-                        seePassword ?(<FaEye onClick={()=>setSeePassword(!seePassword)} className='absolute top-[10px] right-[10px] text-xl'/>):(
-                            <FaEyeSlash onClick={()=>setSeePassword(!seePassword)} className='absolute top-[10px] right-[10px] text-xl' />
+                        seePassword ? (<FaEye onClick={() => setSeePassword(!seePassword)} className='absolute top-[10px] right-[10px] text-xl' />) : (
+                            <FaEyeSlash onClick={() => setSeePassword(!seePassword)} className='absolute top-[10px] right-[10px] text-xl' />
                         )
                     }
-                    
-                    <input type={seePassword? "text":"password"}
+
+                    <input type={seePassword ? "text" : "password"}
                         onChange={handlePass}
                         placeholder='Enter your password'
                         className='border-none focus:outline-none placeholder-black' />
                 </div>
-                <p>{errpassword}</p>
-                
+                <p className='bg-red-500 font-sans font-normal text-[15px] w-[220px] rounded-[10px] '>{errpassword}</p>
+
                 <div className='w-[424px] h-[90px] mt-[56px] bg-[#5F34F5]'>
-                    <button 
-                    onClick={handleLogin}
-                    className='font-sans font-semibold text-[20px] text-white py-[19px] px-[113px]' href="">Login to Continue</button>
+                    <button
+                        onClick={handleLogin}
+                        className='font-sans font-semibold text-[20px] text-white py-[19px] px-[113px]' href="">Login to Continue</button>
+                </div>
+                <div className='w-[424px]  mt-[16px] bg-orange-300 '>
+                    <p className='text-center py-[12px]'>
+                       <Link to="/forgetpassword"> Forget Password</Link></p>
                 </div>
                 <div className='mt-[45px]'>
-                    <p className='font-sans font-mixed text-[13px]'>Don’t have an account ? 
-                        <span className='font-sans font-mixed text-[13px] text-[#EA6C00]'>Sign up</span></p>
+                    <p className='font-sans font-mixed text-[13px]'>Don’t have an account ?
+                        <span className='font-sans font-mixed text-[13px] text-[#EA6C00]'>
+                           <Link to="/registration"> Sign up</Link></span></p>
                 </div>
             </div>
             <div className='w-1/2'>

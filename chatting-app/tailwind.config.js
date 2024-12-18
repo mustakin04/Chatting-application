@@ -12,8 +12,11 @@ export default {
         'nunito': ['Nunito', 'sans-serif',]
       },
       dropShadow: {
-        'xxl': '0 4px 4x rgba(4, 4, 4, 0.25)',
-      }
+        'demo': '0 35px 35px rgba(0, 0, 0, 0.25)'
+      },
+      colors: {
+        'mustakin': '#243c5a',
+      },
 
     },
   },

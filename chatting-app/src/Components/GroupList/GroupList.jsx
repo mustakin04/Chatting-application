@@ -5,12 +5,13 @@ import group1 from "../../assets/Ellipse 2.png"
 import Buttons from '../Buttons/Buttons';
 import group2 from "../../assets/Ellipse 3.png"
 import group4 from "../../assets/Ellipse 4.png"
+import Accept from '../Accept/Accept';
 
 const GroupList = () => {
     return (
         <div>
             <div className='w-[427px] h-[954px] ml-[43px]'>
-                <div className='flex items-center gap-[36px] pl-[23px] border-[2px] drop-shadow-md rounded-[20px] py-[18px]'>
+                <div className='flex items-center gap-[36px] pl-[23px] border-[2px] Shadow-demo rounded-[20px] py-[18px]'>
                     <CiSearch />
                     <input
                         type="text"
@@ -21,7 +22,7 @@ const GroupList = () => {
                     </div>
                 </div>
                 {/* Group list */}
-                <div className='px-[20px] py-[13px] drop-shadow-md'>
+                <div className='px-[20px] py-[13px] drop-shadow-demo'>
                     <div className='flex justify-between mb-[17px]'>
                         <p className='font-poppins font-semibold text-[20px]'>Groups List</p>
                         <PiDotsThreeVerticalBold />
@@ -59,49 +60,59 @@ const GroupList = () => {
 
                 </div>
                 {/* Friend Request */}
-                <div className='px-[20px] py-[13px] drop-shadow-md'>
+                <div className='px-[20px] py-[13px] shadow-demo'>
                     <div className='flex justify-between mb-[17px]'>
                         <p className='font-poppins font-semibold text-[20px]'>Friend  Request</p>
                         <PiDotsThreeVerticalBold />
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
-                        <div className='flex justify-between items-center'>
-                            <img src={group1} alt="" />
-                            <div >
-                                <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Raghav</p>
-                                <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>Dinner?</h4>
+                    <div className='border-b-[2px] pb-[13px] '>
+                        <div className='flex justify-between items-center mr-[20px]'>
+                            <div className='flex gap-4 items-center'>
+                                <img src={group1} alt="" />
+                                <div >
+                                    <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Raghav</p>
+                                    <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>Dinner?</h4>
+                                </div>
                             </div>
-                            <Buttons></Buttons>
+                            <div>
+                                <Accept></Accept>
+                            </div>
                         </div>
                     </div>
                     <div className='border-b-[2px] py-[13px]'>
-                        <div className='flex justify-between items-center'>
-                            <img src={group2} alt="" />
-                            <div >
-                                <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Swathi</p>
-                                <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>Sure!</h4>
+                        <div className='flex justify-between items-center mr-[20px]'>
+                            <div className='flex gap-4 items-center'>
+                                <img src={group2} alt="" />
+                                <div >
+                                    <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Swathi</p>
+                                    <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>Sure!</h4>
+                                </div>
                             </div>
-                            <Buttons></Buttons>
+                            <Accept></Accept>
                         </div>
                     </div>
                     <div className='border-b-[2px] py-[13px]'>
-                        <div className='flex justify-between items-center'>
-                            <img src={group4} alt="" />
-                            <div >
-                                <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Kiran</p>
-                                <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>hi</h4>
+                        <div className='flex justify-between items-center mr-[20px]'>
+                            <div className='flex gap-4 items-center'>
+                                <img src={group4} alt="" />
+                                <div >
+                                    <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Kiran</p>
+                                    <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>hi</h4>
+                                </div>
                             </div>
-                            <Buttons></Buttons>
+                            <Accept></Accept>
                         </div>
                     </div>
                     <div className=' py-[13px]'>
-                        <div className='flex justify-between items-center'>
-                            <img src={group4} alt="" />
-                            <div >
-                                <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Kiran</p>
-                                <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>hi</h4>
+                        <div className='flex justify-between items-center mr-[20px]'>
+                            <div className='flex gap-4 items-center'>
+                                <img src={group4} alt="" />
+                                <div >
+                                    <p className='font-poppins font-semibold text-[18px] text-[#000000]'>Kiran</p>
+                                    <h4 className='font-poppins font-medium text-[14px] text-[#4D4D4D]'>hi</h4>
+                                </div>
                             </div>
-                            <Buttons></Buttons>
+                            <Accept></Accept>
                         </div>
                     </div>
 
