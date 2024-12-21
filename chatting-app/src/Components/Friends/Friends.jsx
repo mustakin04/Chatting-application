@@ -9,12 +9,12 @@ const Friends = () => {
     return (
         <div>
             <div className='w-[344px] '>
-                <div>
-                    <div className='flex justify-between mb-[17px]'>
+                <div className='px-[20px] mt-[40px]'>
+                    <div className='flex justify-between mb-[17px] '>
                         <p className='font-poppins font-semibold text-[20px]'>Friend </p>
                         <PiDotsThreeVerticalBold />
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
+                    <div className='border-b-[2px] pb-[13px] mt-[12px]'>
                         <div className='flex  items-center'>
                             <img src={fried1} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -26,7 +26,7 @@ const Friends = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
+                    <div className='border-b-[2px] pb-[13px] mt-[12px]'>
                         <div className='flex  items-center'>
                             <img src={fried2} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -38,7 +38,7 @@ const Friends = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
+                    <div className='border-b-[2px] pb-[13px] mt-[12px]'>
                         <div className='flex  items-center'>
                             <img src={fried3} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -50,7 +50,7 @@ const Friends = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=' pb-[13px]'>
+                    <div className=' pb-[13px] mt-[12px] mb-[10px]'>
                         <div className='flex  items-center'>
                             <img src={fried4} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -65,12 +65,12 @@ const Friends = () => {
                     
                 </div>
                 {/* My Groups */}
-                <div>
-                    <div className='flex justify-between mb-[17px]'>
-                        <p className='font-poppins font-semibold text-[20px]'>Friend </p>
+                <div className='px-[20px] '>
+                    <div className='flex justify-between mb-[17px] '>
+                        <p className='font-poppins font-semibold text-[20px]'>My Groups </p>
                         <PiDotsThreeVerticalBold />
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
+                    <div className='border-b-[2px] pb-[13px] mt-[12px]'>
                         <div className='flex  items-center'>
                             <img src={fried1} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -82,7 +82,7 @@ const Friends = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
+                    <div className='border-b-[2px] pb-[13px] mt-[12px]'>
                         <div className='flex  items-center'>
                             <img src={fried2} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -94,7 +94,7 @@ const Friends = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='border-b-[2px] pb-[13px]'>
+                    <div className='border-b-[2px] pb-[13px] mt-[12px]'>
                         <div className='flex  items-center'>
                             <img src={fried3} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>
@@ -106,7 +106,7 @@ const Friends = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=' pb-[13px]'>
+                    <div className=' pb-[13px] mt-[12px] mb-[30px]'>
                         <div className='flex  items-center'>
                             <img src={fried4} alt="" />
                             <div className='flex gap-[92px] ml-[11px]'>

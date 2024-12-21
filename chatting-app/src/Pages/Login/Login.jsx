@@ -6,6 +6,8 @@ import { FaEyeSlash } from "react-icons/fa";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { userInformation } from '../../Slice/Slice';
 
 
 const Login = () => {
@@ -18,6 +20,9 @@ const Login = () => {
     const [errpassword, setErrPassword] = useState("")
 
     const [seePassword, setSeePassword] = useState(false)
+    const disPatch=useDispatch()
+    // const useSlect=useSelector()
+
 
     const handleMail = (e) => {
         setEmail(e.target.value)
@@ -48,7 +53,9 @@ const Login = () => {
         }
         if (isvalid) {
             signInWithEmailAndPassword(auth, email, pass)
-                .then(() => {
+                .then((data) => {
+                    disPatch(userInformation(data.user))
+                    localStorage.setItem("userInformation" ,JSON.stringify(data.user))
                     setEmail("")
                     setPass("")
                     toast("Registation Succesfully Done")
@@ -67,6 +74,7 @@ const Login = () => {
         }
     }
     return (
+        <>
         <div className='flex'>
             <div className='w-1/2  ml-[147px] mt-[200px]'>
                 <h1 className='font-sans font-bold text-[34px] text-[#03014C]'>Login to your account!</h1>
@@ -120,6 +128,7 @@ const Login = () => {
                 <img className='w-full h-screen object-center' src={login} alt="" />
             </div>
         </div>
+        </>
     )
 }
 
