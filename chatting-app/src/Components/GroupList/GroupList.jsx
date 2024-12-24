@@ -11,7 +11,7 @@ const GroupList = () => {
     return (
         <div>
             <div className='w-[427px] h-[954px] ml-[43px]'>
-                <div className='flex items-center gap-[36px] pl-[23px] border-[2px] Shadow-demo rounded-[20px] py-[18px]'>
+                <div className='flex items-center gap-[36px] pl-[23px] border-[2px]  rounded-[20px] py-[18px]'>
                     <CiSearch />
                     <input
                         type="text"
@@ -22,7 +22,7 @@ const GroupList = () => {
                     </div>
                 </div>
                 {/* Group list */}
-                <div className='px-[20px] py-[13px] drop-shadow-demo'>
+                <div className='px-[20px] py-[13px] drop-shadow-demo border rounded bg-white'>
                     <div className='flex justify-between mb-[17px]'>
                         <p className='font-poppins font-semibold text-[20px]'>Groups List</p>
                         <PiDotsThreeVerticalBold />

@@ -6,11 +6,16 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { LiaFolderOpen } from "react-icons/lia";
 import { IoCloudUploadOutline } from "react-icons/io5";
-
-
+import { Link } from 'react-router-dom';
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 const Sliderbar = () => {
     const [show, setShow] = useState(false)
+    const [image, setImage] = useState();
+    // const [cropData, setCropData] = useState("");
+
+
     const evenHandle = () => {
         setShow(true)
     }
@@ -18,18 +23,21 @@ const Sliderbar = () => {
         e.preventDefault();
         let files;
         if (e.dataTransfer) {
-          files = e.dataTransfer.files;
+            files = e.dataTransfer.files;
         } else if (e.target) {
-          files = e.target.files;
+            files = e.target.files;
+            console.log(files, "khg;")
         }
         const reader = new FileReader();
         reader.onload = () => {
-          setImage(reader.result );
+            console.log(reader.result, "fgf")
+            setImage(reader.result);
         };
         reader.readAsDataURL(files[0]);
-      };
+    };
+
     return (
-        <div className='relative'>
+        <div >
             <div>
                 <div className='flex '>
                     <div className='w-[186px] h-[954px] bg-[#5F35F5] pt-[12px]'>
@@ -62,33 +70,59 @@ const Sliderbar = () => {
                 </div>
             </div>
             {
-                show && (<div className='absolute bg-blue-400 w-[880px] h-screen  top-0 left-0 z-[9999] '>
+                show &&
+                (<div className='absolute bg-blue-400 w-full h-full  top-0 left-0 z-[9999] '>
                     <div className='bg-white  w-[500px] m-auto '>
 
                         {/* <ToastContainer /> */}
+
+
                         <div className='m-8'>
                             <p className='text-center font-sans font-bold text-[25px] mb-[18px]'>Image Upload</p>
-            
+
+                            {
+                                image &&
+                                <><div className='overflow-hidden w-[100px] h-[100px] m-auto mb-5'>
+                                    <div
+                                        className="img-preview w-[100px] h-[100px] "
+                                    >
+                                    </div>
+                                </div><Cropper
+                                        // ref={cropperRef}
+                                        style={{ height: 400, width: "100%" }}
+                                        zoomTo={0.5}
+                                        initialAspectRatio={1}
+                                        preview=".img-preview"
+                                        src={image}
+                                        viewMode={1}
+                                        minCropBoxHeight={10}
+                                        minCropBoxWidth={10}
+                                        background={false}
+                                        responsive={true}
+                                        autoCropArea={1}
+                                        checkOrientation={false} // https://github.com/fengyuanchen/cropperjs/issues/671
+                                        guides={true} />
+                                </>
+                            }
                             <div className='border-b-[2px] b'>
                                 <input type="file"
-                                   onChange={onChange}
-                                    //   onChange={handleChange}
-                                    placeholder='Enter your valid mail'
-                                    className=' py-[8px] border-none focus:outline-none  ' />
+                                    onChange={onChange}
+
+                                />
                             </div>
                             <p className='bg-pink-400 w-[368px] mt-[5px] rounded-[2px]'></p>
-                            <div className='mt-[13px]'>
+                            <div className='py-[20px]'>
                                 <button
                                     //   onClick={handleSubmit}
                                     className='bg-orange-400 py-[7px] px-[15px] rounded-sm'>Upload</button>
-                                <button className='ml-[20px] bg-lime-500 py-[7px] px-[15px] rounded-sm'>Back to Home
-                                    {/* <Link to='/login'>Back to Login</Link></button> */}</button>
+                                <button className='ml-[20px] bg-lime-500 py-[7px] px-[15px] rounded-sm'>
+                                    <Link to='/home'> Back to Home</Link></button>
                             </div>
                         </div>
                     </div>
                 </div>)
             }
-        </div>
+        </div >
     )
 }
 
