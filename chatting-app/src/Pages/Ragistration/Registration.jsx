@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import registration from "../../../src/assets/registration.png"
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification ,updateProfile} from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {BallTriangle } from 'react-loader-spinner'
+import { getDatabase, ref, set } from "firebase/database";
 
 
 const Registration = () => {
+    const db = getDatabase();
     const navigate = useNavigate("");
     const auth = getAuth();
     const [email, setEmail] = useState("")
@@ -90,18 +92,34 @@ const Registration = () => {
         // If all validations pass, show success alert
         if (isValid) {
             createUserWithEmailAndPassword(auth, email, password)
-                .then(() => {
-                    sendEmailVerification(auth.currentUser)
-                    setLoading(true)
-                    toast("Registation Succesfully Done")
-                    setEmail("")
-                    setPassword("")
-                    setText("")
-                    setTimeout(() => {
-                        navigate("/Login")
-                    }, 3000);
-                    // ...
+                .then((user)=>{
+                    updateProfile(auth.currentUser, {
+                        displayName: text,
+                         photoURL: "https://example.com/jane-q-user/profile.jpg"
+                      })
+                      .then(() => {
+                        console.log(user,"fdg")
+                        sendEmailVerification(auth.currentUser)
+                        setLoading(true)
+                        toast("Registation Succesfully Done")
+                        setEmail("")
+                        setPassword("")
+                        setText("")
+                        setTimeout(() => {
+                            navigate("/Login")
+                        }, 3000);
+                        // ...
+                    }).then(()=>{
+                        set(ref(db, 'users/'+user.user.uid ), {
+                            username: user.user.displayName,
+                            email: user.user.email,
+                            
+                          });
+                        
+                        
+                    })
                 })
+                
                 .catch((error) => {
                     const errorCode = error.code;
                     setErrormail("auth/email-already-in-use")

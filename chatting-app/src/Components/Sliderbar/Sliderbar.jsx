@@ -9,12 +9,16 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
+import { getAuth } from "firebase/auth";
+import { useSelector } from 'react-redux';
 
 const Sliderbar = () => {
+    const auth = getAuth();
     const [show, setShow] = useState(false)
     const [image, setImage] = useState();
     // const [cropData, setCropData] = useState("");
 
+    const data=useSelector((state) =>state.userInfo.information.displayName )
 
     const evenHandle = () => {
         setShow(true)
@@ -35,6 +39,12 @@ const Sliderbar = () => {
         };
         reader.readAsDataURL(files[0]);
     };
+    const handleSubmit=()=>{
+        //  console.log(auth)
+    }
+    const backHome= ()=>{
+        setShow(false)
+    }
 
     return (
         <div >
@@ -50,6 +60,7 @@ const Sliderbar = () => {
                                     onClick={evenHandle}
                                     className='text-3xl text-white' />
                             </div>
+                            <p>{data}</p>
                         </div>
                         <div className='flex w-[155px] h-[89px] bg-white rounded-l-lg ml-[22px] mt-[78px] mb-[57px]'>
                             <IoHomeOutline className='text-[#5F35F5] m-auto items-center w-[46px]  h-[100px]' />
@@ -113,9 +124,10 @@ const Sliderbar = () => {
                             <p className='bg-pink-400 w-[368px] mt-[5px] rounded-[2px]'></p>
                             <div className='py-[20px]'>
                                 <button
-                                    //   onClick={handleSubmit}
+                                    onClick={handleSubmit}
                                     className='bg-orange-400 py-[7px] px-[15px] rounded-sm'>Upload</button>
-                                <button className='ml-[20px] bg-lime-500 py-[7px] px-[15px] rounded-sm'>
+                                <button className='ml-[20px] bg-lime-500 py-[7px] px-[15px] rounded-sm'
+                                        onClick={backHome}>
                                     <Link to='/home'> Back to Home</Link></button>
                             </div>
                         </div>
