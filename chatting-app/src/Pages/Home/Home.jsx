@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <>
       {
-        verifaied ?(<div className='flex justify-around'>
+        verifaied ?(<div className='flex gap-[60px]'>
           <Sliderbar></Sliderbar>
           {/* Group list and Friend Request */}
           <GroupList></GroupList>

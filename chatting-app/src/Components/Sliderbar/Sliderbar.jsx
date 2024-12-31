@@ -17,8 +17,7 @@ const Sliderbar = () => {
     const [show, setShow] = useState(false)
     const [image, setImage] = useState();
     // const [cropData, setCropData] = useState("");
-
-    const data=useSelector((state) =>state.userInfo.information.displayName )
+    const datas=useSelector((state) =>state.userInfo.information.displayName )
 
     const evenHandle = () => {
         setShow(true)
@@ -60,7 +59,7 @@ const Sliderbar = () => {
                                     onClick={evenHandle}
                                     className='text-3xl text-white' />
                             </div>
-                            <p>{data}</p>
+                            <p className='text-[18px] text-white font-mono font-bold text-center'>{datas}</p>
                         </div>
                         <div className='flex w-[155px] h-[89px] bg-white rounded-l-lg ml-[22px] mt-[78px] mb-[57px]'>
                             <IoHomeOutline className='text-[#5F35F5] m-auto items-center w-[46px]  h-[100px]' />
