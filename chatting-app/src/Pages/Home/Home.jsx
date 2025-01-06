@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Sliderbar from '../../Components/Sliderbar/Sliderbar';
-import GroupList from '../../Components/GroupList/GroupList';
 import Friends from '../../Components/Friends/Friends';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import UserList from '../../Components/UserList/UserList';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import GroupList from '../../Components/GroupList/GroupList';
 
 const Home = () => {
   const auth = getAuth();
@@ -29,6 +29,7 @@ const Home = () => {
           <Sliderbar></Sliderbar>
           {/* Group list and Friend Request */}
           <GroupList></GroupList>
+         
           <Friends></Friends>
           <UserList></UserList>
         </div>):(<p>not</p>)
