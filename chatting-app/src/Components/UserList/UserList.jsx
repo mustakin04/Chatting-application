@@ -13,19 +13,20 @@ const UserList = () => {
   const [userList, setUserList] = useState([]);
   const [friendRequestList, setFriendRequestList] = useState([]);
   const [friend,setFriend]=useState([])
+  const[blockList,setBlockList]=useState([])
   useEffect(() => {
     const starCountRef = ref(db, "users/");
     onValue(starCountRef, (snapshot) => {
       let arry = [];
       snapshot.forEach((item) => {
-        // console.log(item.key, "ok")
+        // console.log(item.val(), "ok")
         if ( data.uid!=item.key)
           arry.push({ ...item.val(), userid: item.key });
       });
       setUserList(arry);
     });
   }, []);
-console.log(userList,"ok")
+// console.log(userList,"ok")
   const handlePlus = (item) => {
     console.log(item);
     set(push(ref(db, "friendsRequest/")), {
@@ -57,7 +58,20 @@ console.log(userList,"ok")
       setFriend(arry);
     });
   }, []);
- console.log(friend,"62")
+//  console.log(friend,"62")
+// ##### --block part---#####
+ useEffect(() => {
+    const blockRef = ref(db, "block/");
+    onValue(blockRef, (snapshot) => {
+      let arry = [];
+      snapshot.forEach((item) => {
+      console.log(snapshot.val(),"68")
+        arry.push(item.val().blockbyid+item.val().blockid);
+      });
+      setBlockList(arry);
+    });
+  }, []);
+  console.log(blockList,"74")
   return (
     <div className="w-[414px]">
       <div className="p-[12px] border   bg-white">
@@ -86,7 +100,10 @@ console.log(userList,"ok")
                     {item.email}
                   </h4>
                 </div>
-                {
+                { blockList.includes(data.uid + item.blockbyid) ||
+                blockList.includes(item.blockbyid + data.uid) 
+                ?(<div>block</div>)
+                :
                   friend.includes(data.uid + item.userid) ||
                   friend.includes(item.userid + data.uid) 
                  ?(<div

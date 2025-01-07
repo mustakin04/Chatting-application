@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import fried1 from "../../assets/Ellipse 5.png";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
 import MyGroup from "../MyGroup/MyGroup";
 import { useSelector } from "react-redux";
 
@@ -15,13 +15,38 @@ const Friends = () => {
     onValue(starCountRef, (snapshot) => {
       let arry = [];
       snapshot.forEach((item) => {
-        if(data.uid==item.val().reciverid ||data.uid==item.val().senderid){
-        arry.push(item.val());}
+        if (
+          data.uid == item.val().reciverid ||
+          data.uid == item.val().senderid
+        ) {
+          arry.push({ ...item.val(), keys: item.key });
+        }
       });
       setFriend(arry);
     });
   }, []);
-  console.log(friend, "aee");
+  // console.log(friend, "aee");
+  const handleBlock = (item) => {
+    if (data.uid == item.senderid) {
+      set(push(ref(db, "block/")), {
+        blockid: item.reciverid,
+        block: item.recivername,
+        blockbyid: item.senderid,
+        blockby: item.sendername,
+      }).then(()=>{
+        remove(ref(db,"friend/"+item.keys))
+      });
+    }else if(data.uid==item.reciverid){
+      set(push(ref(db, "block")), {
+        blockid: item.senderid,
+        block: item.sendername,
+        blockbyid: item.reciverid,
+        blockby: item.recivername,
+      }).then(()=>{
+        remove(ref(db,"friend/"+item.keys))
+      });
+    }
+  };
   return (
     <div>
       <div className="w-[344px] ">
@@ -37,15 +62,20 @@ const Friends = () => {
                 <div className="flex gap-[92px] ml-[11px]">
                   <div>
                     <p className="font-poppins font-semibold text-[18px] text-[#000000]">
-                      {item.reciverid==data.uid ?  item.sendername : item.recivername}
+                      {item.reciverid == data.uid
+                        ? item.sendername
+                        : item.recivername}
                     </p>
                     <h4 className="font-poppins font-medium text-[14px] text-[#4D4D4D]">
                       Dinner?
                     </h4>
                   </div>
-                  <p className="font-poppins font-medium text-[10px] ">
-                    Today, 8:56pm
-                  </p>
+                  <button
+                    onClick={() => handleBlock(item)}
+                    className="font-poppins font-medium text-[20px] bg-blue-600 px-[15px]  rounded"
+                  >
+                    Block
+                  </button>
                 </div>
               </div>
             </div>
