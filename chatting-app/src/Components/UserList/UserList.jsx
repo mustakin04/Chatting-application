@@ -73,7 +73,7 @@ const UserList = () => {
   }, []);
   console.log(blockList,"74")
   return (
-    <div className="w-[414px]">
+    <div className="w-[454px]">
       <div className="p-[12px] border   bg-white">
         <div className="flex justify-between  ">
           <p className="font-poppins font-semibold text-[20px] text-[#000000]">
@@ -100,14 +100,16 @@ const UserList = () => {
                     {item.email}
                   </h4>
                 </div>
-                { blockList.includes(data.uid + item.blockbyid) ||
-                blockList.includes(item.blockbyid + data.uid) 
-                ?(<div>block</div>)
+                { blockList.includes(data.uid + item.userid) ||
+                blockList.includes(item.userid + data.uid) 
+                ?(<div className="cursor-pointer bg-blue-700 flex items-center px-[14px] text-white font-sans font-bold rounded">
+                  <p>block</p>
+                  </div>)
                 :
                   friend.includes(data.uid + item.userid) ||
                   friend.includes(item.userid + data.uid) 
                  ?(<div
-                    className="cursor-pointer"
+                    className="cursor-pointer bg-blue-700 flex px-[12px] text-white font-sans font-bold rounded"
                     onClick={() => handlePlus(item)}
                   >
                     <button disabled>friend</button>
@@ -117,7 +119,7 @@ const UserList = () => {
                 friendRequestList.includes(item.userid + data.uid) 
                 ? (
                   <div
-                    className="cursor-pointer"
+                    className="cursor-pointer bg-blue-700 flex px-[12px] text-white font-sans font-bold rounded "
                     onClick={() => handlePlus(item)}
                   >
                     <button disabled>panding</button>
