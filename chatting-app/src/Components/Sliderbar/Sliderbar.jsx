@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 const Sliderbar = () => {
     const auth = getAuth();
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState()
     const [image, setImage] = useState();
     // const [cropData, setCropData] = useState("");
     const datas=useSelector((state) =>state.userInfo.information.displayName )
