@@ -26,7 +26,7 @@ const Home = () => {
     <>
       {
         verifaied ?(<div className='flex gap-[60px]'>
-          <Sliderbar></Sliderbar>
+          <Sliderbar active="home"></Sliderbar>
           {/* Group list and Friend Request */}
           <GroupList></GroupList>
          

@@ -13,6 +13,7 @@ import {
 import firebaseConfig from './Components/Authentication/firbase.config'
 import Home from './Pages/Home/Home'
 import ForgetPassword from './Pages/ForgetPassword/ForgetPassword'
+import Massage from './Pages/Massage/Massage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login/>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/forgetpassword" element={<ForgetPassword/>}/>
+      <Route path="/massage" element={<Massage/>}/>
     </Route>
   )
 );
