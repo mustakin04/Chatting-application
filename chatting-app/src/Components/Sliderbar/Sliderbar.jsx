@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import image1 from "../../../src/assets/Ellipse 1.png";
 import { IoHomeOutline } from "react-icons/io5";
-import { RiMessage2Line } from "react-icons/ri";
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { LiaFolderOpen } from "react-icons/lia";
@@ -88,19 +88,21 @@ const Sliderbar = ({active}) => {
               </p>
             </div>
             <div
-              className="flex w-[155px] h-[89px] bg-white
-                         rounded-l-lg ml-[22px] mt-[78px] mb-[57px]"
+              className={` ${active=="home"&&  "bg-white text-[#5F35F5]"} w-[155px] h-[89px]
+                         rounded-l-lg ml-[22px] mt-[78px] mb-[57px]`}
             >
               <Link to="/home">
                 <IoHomeOutline
-                  className="text-[#5F35F5] m-auto 
-                            items-center text-center w-[46px]  h-[100px]"
+                  className={`${active=="home"&&"text-[#5F35F5]" }text-black m-auto 
+                             text-center w-[46px]  h-[100px]`}
                 />
               </Link>
             </div>
-            <div>
+            <div className={` ${active=="msg"&&  "bg-white text-[#5F35F5]"} w-[155px] h-[89px]
+                         rounded-l-lg ml-[22px] pt-[15px] mt-[78px] mb-[57px]`}>
               <Link to="/massage">
-                <RiMessage2Line className="bg-white w-[46px] h-[46px] m-auto" />
+                <IoChatbubbleEllipsesOutline
+                className=" w-[46px] h-[46px] m-auto overflow-hidden" />
               </Link>
             </div>
             <div className="relative">
