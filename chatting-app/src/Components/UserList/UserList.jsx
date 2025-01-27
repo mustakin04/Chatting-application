@@ -87,8 +87,8 @@ const UserList = () => {
     })
   }
   return (
-    <div className="w-[500px]">
-      <div className="p-[12px] border   bg-white">
+    <div className="w-[500px] mt-[20px] ">
+      <div className="p-[12px] border rounded-2xl  bg-white">
         <div className="   bg-pink-500 mb-[25px] py-[20px] px-[10px] rounded ">
          <div className="flex justify-between items-center">
          <p className="font-poppins font-semibold text-[20px] text-[#000000]">
@@ -128,13 +128,13 @@ const UserList = () => {
                   </div>
                   {blockList.includes(data.uid + item.userid) ||
                   blockList.includes(item.userid + data.uid) ? (
-                    <div className="cursor-pointer bg-blue-700 flex items-center px-[14px] text-white font-sans font-bold rounded">
+                    <div className="cursor-pointer bg-homecolor flex items-center px-[14px] text-white font-sans font-bold rounded">
                       <p>block</p>
                     </div>
                   ) : friend.includes(data.uid + item.userid) ||
                     friend.includes(item.userid + data.uid) ? (
                     <div
-                      className="cursor-pointer bg-blue-700 flex px-[12px] text-white font-sans font-bold rounded"
+                      className="cursor-pointer bg-homecolor flex px-[12px] text-white font-sans font-bold rounded"
                       onClick={() => handlePlus(item)}
                     >
                       <button disabled>friend</button>
@@ -142,7 +142,7 @@ const UserList = () => {
                   ) : friendRequestList.includes(data.uid + item.userid) ||
                     friendRequestList.includes(item.userid + data.uid) ? (
                     <div
-                      className="cursor-pointer bg-blue-700 flex px-[12px] text-white font-sans font-bold rounded "
+                      className="cursor-pointer bg-homecolor flex px-[12px] text-white font-sans font-bold rounded "
                       onClick={() => handlePlus(item)}
                     >
                       <button disabled>panding</button>
@@ -180,13 +180,13 @@ const UserList = () => {
                   </div>
                   {blockList.includes(data.uid + item.userid) ||
                   blockList.includes(item.userid + data.uid) ? (
-                    <div className="cursor-pointer bg-blue-700 flex items-center px-[14px] text-white font-sans font-bold rounded">
+                    <div className="cursor-pointer bg-homecolor flex items-center px-[14px] text-white font-sans font-bold rounded">
                       <p>block</p>
                     </div>
                   ) : friend.includes(data.uid + item.userid) ||
                     friend.includes(item.userid + data.uid) ? (
                     <div
-                      className="cursor-pointer bg-blue-700 flex px-[12px] text-white font-sans font-bold rounded"
+                      className="cursor-pointer bg-homecolor flex px-[12px] text-white font-sans font-bold rounded"
                       onClick={() => handlePlus(item)}
                     >
                       <button disabled>friend</button>
@@ -194,7 +194,7 @@ const UserList = () => {
                   ) : friendRequestList.includes(data.uid + item.userid) ||
                     friendRequestList.includes(item.userid + data.uid) ? (
                     <div
-                      className="cursor-pointer bg-blue-700 flex px-[12px] text-white font-sans font-bold rounded "
+                      className="cursor-pointer bg-homecolor flex px-[12px] text-white font-sans font-bold rounded "
                       onClick={() => handlePlus(item)}
                     >
                       <button disabled>panding</button>

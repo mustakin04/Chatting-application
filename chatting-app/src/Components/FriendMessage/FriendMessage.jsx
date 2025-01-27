@@ -28,24 +28,27 @@ const FriendMessage = () => {
     });
   }, []);
   const handleFriendData = (item) => {
-    console.log(item,"31")
+    // console.log(item,"31")
     if (data.uid == item.senderid) {
       dispatch(
         activechatinfo({
+          status:"single",
           id: item.reciverid,
-          name: item.rcivername,
+          name: item.recivername,
         })
       );
       localStorage.setItem(
         "activeChatData",
         JSON.stringify({
+          status:"single",
           id: item.reciverid,
-          name: item.rcivername,
+          name: item.recivername,
         })
       );
     } else {
         dispatch(
             activechatinfo({
+              status:"single",
               id: item.senderid,
               name:item.sendername,
             })
@@ -53,6 +56,7 @@ const FriendMessage = () => {
           localStorage.setItem(
             "activeChatData",
             JSON.stringify({
+              status:"single",
               id: item.senderid,
               name: item.sendername,
             })
@@ -61,8 +65,8 @@ const FriendMessage = () => {
   };
   return (
     <div>
-      <div className="w-[344px]  ml-[43px] ">
-        <div className="px-[20px] mt-[40px] border mb-[40px]">
+      <div className="w-[427px]  ml-[43px]  ">
+        <div className="px-[20px] mt-[40px] border mb-[40px] rounded-2xl py-[25px]">
           <div className="flex justify-between mb-[17px] ">
             <p className="font-poppins font-semibold text-[20px]">Friend </p>
             <PiDotsThreeVerticalBold />

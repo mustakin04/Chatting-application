@@ -16,7 +16,13 @@ export default {
       },
       colors: {
         'mustakin': '#243c5a',
+        "homecolor" :"#01aa85",
       },
+      backgroundImage: {
+        'facebook': "url('/src/assets/FacebookCover.jpg')",
+        "chatbg":"url('/src/assets/stoc.jpg')"
+        
+      }
 
     },
   },

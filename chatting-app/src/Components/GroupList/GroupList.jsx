@@ -9,32 +9,30 @@ import { useSelector } from "react-redux";
 const GroupList = () => {
   const db = getDatabase();
   const [show, setShow] = useState(false);
-  const [groupName,setGroupName]=useState("")
-  const [groupTagline,setGroupTagline]=useState("")
+  const [groupName, setGroupName] = useState("");
+  const [groupTagline, setGroupTagline] = useState("");
 
   const data = useSelector((state) => state.userInfo.information);
-
 
   const handleGroup = () => {
     setShow(!show);
   };
-  const handleSubmit=()=>{
-    set(push(ref(db, 'grouplist/')), {
-        groupName:groupName,
-        groupTagline:groupTagline,
-        adminName:data.displayName,
-        adminid:data.uid
+  const handleSubmit = () => {
+    set(push(ref(db, "grouplist/")), {
+      groupName: groupName,
+      groupTagline: groupTagline,
+      adminName: data.displayName,
+      adminid: data.uid,
     });
-    setGroupName(" ")
-    setGroupTagline(" ")
-  }
-   
-   
-  
+    setGroupName(" ");
+    setGroupTagline(" ");
+  };
+
   return (
     <div>
       <div className="w-[427px] ml-[43px]">
-        <div className="flex items-center gap-[36px] pl-[23px] border-[2px]  rounded-[20px] py-[18px]">
+        <div className="flex items-center gap-[36px] pl-[23px] border-[2px]  
+        rounded-[20px] py-[18px] px-[8px] mb-[30px]">
           <CiSearch />
           <input
             type="text"
@@ -46,7 +44,7 @@ const GroupList = () => {
           </div>
         </div>
         {/* Group list */}
-        <div className="px-[20px] py-[13px]  border rounded bg-white">
+        <div className="px-[20px] py-[13px]  border rounded-2xl bg-white">
           <div className="flex justify-between mb-[17px]">
             <p className="font-poppins font-semibold text-[20px]">
               Groups List
@@ -63,16 +61,20 @@ const GroupList = () => {
           </div>
           <div className="border-b-[2px] pb-[13px]">
             <div className="flex justify-between items-center">
-              <img src={group1} alt="" />
-              <div>
-                <p className="font-poppins font-semibold text-[18px] text-[#000000]">
-                  Friends Reunion
-                </p>
-                <h4 className="font-poppins font-medium text-[14px] text-[#4D4D4D]">
-                  Hi Guys, Wassup!
-                </h4>
+              <div className="flex items-center ">
+                <img src={group1} alt="" />
+                <div className="ml-[10px]">
+                  <p className="font-poppins font-semibold text-[18px] text-[#000000]">
+                    Friends Reunion
+                  </p>
+                  <h4 className="font-poppins font-medium text-[14px] text-[#4D4D4D]">
+                    Hi Guys, Wassup!
+                  </h4>
+                </div>
               </div>
-              <Buttons></Buttons>
+              <div>
+                <Buttons></Buttons>
+              </div>
             </div>
           </div>
         </div>
@@ -89,25 +91,31 @@ const GroupList = () => {
             <input
               placeholder="Group Tagline"
               value={groupName}
-              onChange={(e)=>setGroupName(e.target.value)}
+              onChange={(e) => setGroupName(e.target.value)}
               type="text"
               className="w-full py-3 px-[5px] mt-[24px] placeholder:text-black"
             />
             <input
               value={groupTagline}
-              onChange={(e)=>setGroupTagline(e.target.value)}
+              onChange={(e) => setGroupTagline(e.target.value)}
               type="text"
               placeholder="Group Name"
               className="w-full py-3 px-[5px]  mt-[24px]"
             />
-            <button 
-             onClick={handleSubmit}
-             className="w-full bg-rose-400 font-poppins font-semibold
-             text-white text-[17px] mt-[24px] py-3">Submit</button>
-              <button
+            <button
+              onClick={handleSubmit}
+              className="w-full bg-rose-400 font-poppins font-semibold
+             text-white text-[17px] mt-[24px] py-3"
+            >
+              Submit
+            </button>
+            <button
               onClick={handleGroup}
               className="w-full bg-rose-400 font-poppins font-semibold
-             text-white text-[17px] mt-[24px] py-3 text-center">Go Back</button>
+             text-white text-[17px] mt-[24px] py-3 text-center"
+            >
+              Go Back
+            </button>
           </div>
         </div>
       )}

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
-import fried1 from "../../assets/Ellipse 5.png";
 import fried2 from "../../assets/Ellipse 6.png";
-import fried3 from "../../assets/Ellipse 7.png";
-import fried4 from "../../assets/Ellipse 8.png";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useSelector } from "react-redux";
 const MyGroup = () => {
@@ -26,7 +23,7 @@ const MyGroup = () => {
   console.log(groupData,"24")
   return (
     <div>
-      <div>
+      <div className="w-[427px] border pt-[20px] rounded-2xl">
         {/* My Groups */}
         <div className="px-[20px] ">
           <div className="flex justify-between mb-[17px] ">

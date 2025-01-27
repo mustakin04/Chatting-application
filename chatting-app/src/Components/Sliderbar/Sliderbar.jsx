@@ -71,7 +71,7 @@ const Sliderbar = ({active}) => {
     <div>
       <div>
         <div className="flex ">
-          <div className="w-[186px] h-[954px] bg-[#5F35F5] pt-[12px]">
+          <div className="w-[186px] bg-homecolor pt-[12px]">
             <div className="group relative w-[100px] h-[100px] rounded-full m-auto">
               <img src={image1} alt="" />
               <div
@@ -89,25 +89,26 @@ const Sliderbar = ({active}) => {
             </div>
             <div
               className={` ${active=="home"&&  "bg-white text-[#5F35F5]"} w-[155px] h-[89px]
-                         rounded-l-lg ml-[22px] mt-[78px] mb-[57px]`}
+                         rounded-l-lg ml-[22px] mt-[78px] mb-[57px] text-white`}
             >
               <Link to="/home">
                 <IoHomeOutline
-                  className={`${active=="home"&&"text-[#5F35F5]" }text-black m-auto 
+                  className={`${active=="home"&&"text-[#5F35F5]" } m-auto 
                              text-center w-[46px]  h-[100px]`}
                 />
               </Link>
             </div>
             <div className={` ${active=="msg"&&  "bg-white text-[#5F35F5]"} w-[155px] h-[89px]
-                         rounded-l-lg ml-[22px] pt-[15px] mt-[78px] mb-[57px]`}>
-              <Link to="/massage">
+                         rounded-l-lg ml-[22px] pt-[15px] mt-[78px] text-white mb-[57px]`}>
+              <Link to="/message">
                 <IoChatbubbleEllipsesOutline
-                className=" w-[46px] h-[46px] m-auto overflow-hidden" />
+                className={`${active=="msg"&&"text-[#5F35F5]"} w-[46px] h-[46px] 
+                m-auto overflow-hidden`} />
               </Link>
             </div>
             <div className="relative">
               
-              <IoMdNotificationsOutline className="bg-[#5F35F5] text-white 
+              <IoMdNotificationsOutline className="bg-homecolor text-white 
               w-[46px] h-[50px] m-auto my-[83px]" />
               {
                 friendRequest.length>0?(
@@ -119,9 +120,9 @@ const Sliderbar = ({active}) => {
               }
             </div>
             <div>
-              <CiSettings className="bg-[#5F35F5] text-white w-[46px] h-[46px] m-auto" />
+              <CiSettings className="bg-homecolor text-white w-[46px] h-[46px] m-auto" />
             </div>
-            <div className="pt-[187px]">
+            <div className="pt-[187px] pb-[30px]">
               <LiaFolderOpen className=" text-white w-[46px] h-[46px] m-auto " />
             </div>
           </div>

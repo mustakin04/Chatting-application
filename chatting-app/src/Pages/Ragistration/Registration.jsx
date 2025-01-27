@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import registration from "../../../src/assets/registration.png"
+import registration from "../../../src/assets/resource-tti-15.jpeg"
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { getAuth, createUserWithEmailAndPassword,sendEmailVerification ,updateProfile} from "firebase/auth";
@@ -130,8 +130,8 @@ const Registration = () => {
 
     return (
         <div className='flex'>
-            <div className='w-1/2 ml-[190px] mt-[60px]'>
-                <h1 className='font-nunito font-bold text-[34px] text-[#11175D]'>Get started with easily register</h1>
+            <div className='w-[45%] ml-[190px] mt-[60px]'>
+                <h1 className='font-nunito font-bold text-[34px] text-[#de968d]'>Get started with easily register</h1>
                 <h2 className='font-nunito font-normal text-[20px] text-[#bfbfbf] mt-[13px] mb-[5px]'>Free register and you can enjoy it</h2>
                 {succes && <p className='bg-green-400 font-nunito font-bold text-[24px] text-white w-[368px]
                  py-[10px] mb-[30px] rounded-[5px]'>{succes}</p>}
@@ -194,13 +194,13 @@ const Registration = () => {
                     <a
                         onClick={handleSubmit}
                         className='font-nunito font-semibold text-[20px] text-[#ffffff] 
-               bg-[#5F35F5] py-[20px] pl-[158px] pr-[132px] rounded-[86px]' href="#"> Sign up</a>
+               bg-[#de968d] py-[20px] pl-[158px] pr-[132px] rounded-[86px]' href="#"> Sign up</a>
                 </div>
                 <p className='font-sans font-mixed text-[13px] mt-[35px] w-[368px] text-center '>
                     Already  have an account ? <span className='text-[#EA6C00]'>
                        <Link to="/login"> Sign In</Link></span></p>
             </div >
-            <div className='w-1/2'>
+            <div className='w-[55%]'>
                 <img className='w-full h-screen object-center' src={registration} alt="" />
             </div>
         </div>

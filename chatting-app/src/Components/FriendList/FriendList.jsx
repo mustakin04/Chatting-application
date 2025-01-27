@@ -30,11 +30,11 @@ const FriendList = () => {
     });
   };
   return (
-    <div>
-      <div className="w-[427px] ml-[43px]">
+    <div className="ml-[43px] mt-[30px] w-[427px]">
+      <div className="border  rounded-2xl">
         
         {/* Friend Request */}
-        <div className="px-[20px] py-[13px] shadow-demo bg-white">
+        <div className="px-[20px] py-[13px] shadow-demo bg-white ">
           <div className="flex justify-between mb-[17px]">
             <p className="font-poppins font-semibold text-[20px]">
               Friend Request

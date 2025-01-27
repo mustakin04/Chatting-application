@@ -29,8 +29,8 @@ const FriendBlock = () => {
   return (
     <div>
       {/* blocked users */}
-      <div className="px-[20px] py-[13px] shadow-demo border mt-[20px]  bg-white">
-        <div className="flex justify-between mb-[17px]">
+      <div className="px-[20px] py-[13px] shadow-demo border mt-[20px]  rounded-xl bg-white">
+        <div className="flex justify-between mb-[17px] pt-[15px]">
           <p className="font-poppins font-semibold text-[20px]">
             Friend Blocklist
           </p>

@@ -31,7 +31,7 @@ const Groups = () => {
   
   return (
     <div>
-      <div className="w-[427px] ml-[43px]">
+      <div className="w-[427px] ml-[43px] ">
         <div className="flex items-center gap-[36px] pl-[23px] border-[2px]  rounded-[20px] py-[18px]">
           <CiSearch />
           <input
@@ -44,7 +44,7 @@ const Groups = () => {
           </div>
         </div>
         {/* Group list */}
-        <div className="px-[20px] py-[13px]  border rounded bg-white">
+        <div className="px-[20px] py-[13px]  border rounded-2xl bg-white mt-[30px]">
           <div className="flex justify-between mb-[17px]">
             <p className="font-poppins font-semibold text-[20px]">
               Groups List
@@ -54,7 +54,7 @@ const Groups = () => {
           <div className="border-b-[2px] pb-[13px]">
             <div className="flex  items-center">
               <img src={group1} alt="" />
-              <div>
+              <div className="ml-[10px]">
                 <p className="font-poppins font-semibold text-[18px] text-[#000000]">
                   Friends Reunion
                 </p>

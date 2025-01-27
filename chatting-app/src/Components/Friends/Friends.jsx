@@ -49,18 +49,19 @@ const Friends = () => {
   };
   return (
     <div>
-      <div className="w-[344px] ">
-        <div className="px-[20px] mt-[40px] border mb-[40px]">
-          <div className="flex justify-between mb-[17px] ">
+      <div className="w-[427px] ">
+        <div className="px-[20px] mt-[40px] border mb-[40px] rounded-2xl">
+          <div className="flex justify-between mb-[17px] pt-[20px] ">
             <p className="font-poppins font-semibold text-[20px]">Friend </p>
             <PiDotsThreeVerticalBold />
           </div>
           {friend.map((item, index) => (
-            <div key={index} className="border-b-[2px] pb-[13px] mt-[12px]">
-              <div className="flex  items-center">
+            <div key={index} className="border-b-[2px] pb-[13px] mt-[12px] ">
+              <div className="flex  items-center justify-between">
+               
+                <div className="flex  ">
                 <img src={fried1} alt="" />
-                <div className="flex gap-[92px] ml-[11px]">
-                  <div>
+                  <div className="ml-[10px]">
                     <p className="font-poppins font-semibold text-[18px] text-[#000000]">
                       {item.reciverid == data.uid
                         ? item.sendername
@@ -70,9 +71,12 @@ const Friends = () => {
                       Dinner?
                     </h4>
                   </div>
-                  <button
+                 
+                </div>
+                <div>
+                <button
                     onClick={() => handleBlock(item)}
-                    className="font-poppins font-medium text-[20px] bg-blue-600 px-[15px]  rounded"
+                    className="font-poppins font-medium text-[20px] bg-homecolor px-[15px]  rounded"
                   >
                     Block
                   </button>
