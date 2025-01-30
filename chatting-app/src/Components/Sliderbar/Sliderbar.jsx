@@ -13,7 +13,7 @@ import { getAuth } from "firebase/auth";
 import { useSelector } from "react-redux";
 import { getDatabase, onValue, ref } from "firebase/database";
 
-const Sliderbar = ({active}) => {
+const Sliderbar = ({active ,state}) => {
    const [friendRequest, setFriendRequest] = useState([]);
    const [notification,setNotification]=useState(()=>{
     const save=localStorage.getItem("notification")
@@ -42,7 +42,7 @@ const Sliderbar = ({active}) => {
   }, []);
   
   const evenHandle = () => {
-    setShow(true);
+    setShow(!show);
   };
   const onChange = (e) => {
     e.preventDefault();
@@ -119,8 +119,13 @@ const Sliderbar = ({active}) => {
                 
               }
             </div>
-            <div>
-              <CiSettings className="bg-homecolor text-white w-[46px] h-[46px] m-auto" />
+            <div className={` ${state=="setting"&&  "bg-white text-[#5F35F5]"} w-[155px] h-[89px]
+                         rounded-l-lg ml-[22px] pt-[15px] mt-[78px] text-white mb-[57px]`}>
+             <Link to="/settings">
+             <CiSettings 
+              className={`${state=="setting"&&"text-[#5F35F5]"} w-[46px] h-[46px] 
+              m-auto overflow-hidden`} />
+             </Link>
             </div>
             <div className="pt-[187px] pb-[30px]">
               <LiaFolderOpen className=" text-white w-[46px] h-[46px] m-auto " />

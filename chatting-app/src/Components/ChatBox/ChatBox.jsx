@@ -6,9 +6,13 @@ import message_img from "../../assets/registration.png";
 import { IoIosSend } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import { FcGallery } from "react-icons/fc";
+import { FaRegFaceMeh } from "react-icons/fa6";
+import EmojiPicker from 'emoji-picker-react';
 
 const ChatBox = () => {
   const [sendMessage, setSendMessage] = useState("");
+  const [emoji,setEmoji]=useState(false)
   const [recivedMsg, setRecivedMsg] = useState([]);
   const db = getDatabase();
   const activeData = useSelector((state) => state.activeChat.value);
@@ -23,6 +27,7 @@ const ChatBox = () => {
         whoreciverid: activeData.id,
         whorecivername: activeData.name,
       });
+      setSendMessage("")
     }
   };
   useEffect(() => {
@@ -42,6 +47,9 @@ const ChatBox = () => {
       setRecivedMsg(arry);
     });
   }, []);
+  const handleEmoji=(emoji)=>{
+     setSendMessage( sendMessage+emoji.emoji)
+  }
   console.log(recivedMsg, "0");
   console.log(sendMessage, "10");
   return (
@@ -68,10 +76,7 @@ const ChatBox = () => {
         <div className="px-[20px]">
           {recivedMsg.map((item, index) =>
             item.whosenderid == activeData.id ? (
-              <div
-                key={index}
-                className=" relative max-w-[300px]  mt-[20px]"
-              >
+              <div key={index} className=" relative max-w-[300px]  mt-[20px]">
                 <p
                   className="font-poppins max-w-[300px] inline-block font-medium text-[18px]  text-[#000000] 
         bg-[#F1F1F1]  py-[10px] px-[8px] rounded-sm "
@@ -132,19 +137,36 @@ const ChatBox = () => {
               />
             </div>
           </div>
+        
         </div>
       </div>
       {/* input flied */}
-      <div className=" flex  items-center border-t-2">
-        <input
-          onChange={(e) => setSendMessage(e.target.value)}
-          type="text"
-          className="bg-[#F1F1F1] w-[557px] py-[12px] mt-[20px] font-poppins 
-      font-normal text-[15px] px-[13px]"
-        />
+      <div className="  flex  items-center border-t-2">
+        <div className="relative">
+        {
+          emoji &&  <div className="absolute bottom-[77px] left-[10px]">
+          <EmojiPicker onEmojiClick={(emoji)=>handleEmoji(emoji)}/>
+          </div>
+         }
+          <input
+            value={sendMessage}
+            onChange={(e) => setSendMessage(e.target.value)}
+            type="text"
+            className="bg-[#F1F1F1] w-[557px] py-[12px] mt-[20px] font-poppins 
+           font-normal text-[15px] px-[13px] border-[1px] border-gray-500 outline-none"
+          />
+          <div className="absolute right-[10px] top-[26px]">
+            <FcGallery className="text-3xl " />
+          </div>
+          <div 
+          onClick={()=>setEmoji(!emoji)}
+          className="absolute right-[50px] top-[28px]">
+          <FaRegFaceMeh  className="text-3xl text-green-500"/>
+          </div>
+        </div>
         <div
           className=" flex items-center text-center w-[45px] h-[48px] bg-[#5F35f5] ml-[20px]
-      mt-[20px] rounded-sm"
+          mt-[20px] rounded-sm"
         >
           <IoIosSend
             onClick={handleSend}

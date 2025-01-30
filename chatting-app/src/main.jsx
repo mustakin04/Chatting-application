@@ -17,6 +17,7 @@ import Home from './Pages/Home/Home'
 import ForgetPassword from './Pages/ForgetPassword/ForgetPassword'
 import Massage from './Pages/Massage/Massage'
 import Root from './Pages/Root/Root.jsx'
+import Settings from './Pages/Settings/Settings.jsx'
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "message",
     element: <Massage/>,
+  },
+  {
+    path: "settings",
+    element: <Settings/>,
   }
 ]);
 
