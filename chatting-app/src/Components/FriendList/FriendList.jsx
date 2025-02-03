@@ -21,7 +21,7 @@ const FriendList = () => {
       setFriendRequest(arry);
     });
   }, []);
-  // console.log(friendRequest, "lo")
+  console.log(friendRequest, "lo")
   const handleFriend = (item) => {
     set(push(ref(db, "friend/")), {
       ...item

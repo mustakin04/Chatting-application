@@ -9,6 +9,7 @@ import FriendBlock from "../FriendBlock/FriendBlock";
 const UserList = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.userInfo.information);
+  console.log(data,"12")
 
   const [userList, setUserList] = useState([]);
   const [friendRequestList, setFriendRequestList] = useState([]);
